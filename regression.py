@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-comp_df = pd.read_csv("complaint.csv")
+comp_df = pd.read_csv("Datasetprojpowerbi.csv")
 
 X = comp_df[['Age', 'Gpa', 'Year', 'Count']]
 y = comp_df['Genre']
