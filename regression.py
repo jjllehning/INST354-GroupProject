@@ -17,8 +17,7 @@ y = comp_df['Genre']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 
-LogReg = LogisticRegression()
-
+LogReg = LogisticRegression(multi_class='multinomial', solver='newton-cg')
 
 scaler = preprocessing.StandardScaler()
 X_train = scaler.fit_transform(X_train)
@@ -29,3 +28,10 @@ LogReg.fit(X_train,y_train)
 
 y_pred=LogReg.predict(X_test)
 
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("Precision:", precision_score(y_test, y_pred, average='weighted'))
+print("Recall:", recall_score(y_test, y_pred, average='weighted'))
+
+
+print("Classification Report:\n", classification_report(y_test, y_pred))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
