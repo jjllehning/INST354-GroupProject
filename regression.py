@@ -10,8 +10,8 @@ import seaborn as sns
 
 comp_df = pd.read_csv("complaint.csv")
 
-#Plot for GPA
 
+#Plot for GPA
 #Cut continuous, bound data into parts
 bins = [0, 2.5, 3.5, 4.5]
 labels = [1, 2, 3]
@@ -53,7 +53,6 @@ plt.ylabel("Actual")
 ax.xaxis.set_label_position("top")
 plt.tight_layout()
 plt.show()
-
 
 
 #Plot for Age
