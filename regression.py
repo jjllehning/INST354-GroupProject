@@ -10,6 +10,14 @@ import seaborn as sns
 
 comp_df = pd.read_csv("complaint.csv")
 
+#Cut continuous, bound data into parts
+bins = [0, 2.5, 3.5, 4.5]
+labels = [1, 2, 3]
+comp_df['Gpa'] = pd.cut(comp_df['Gpa'], bins=bins, labels=labels, include_lowest=True)
+
+#Drop missing rows
+comp_df.dropna(subset=['Gpa'], inplace=True)
+
 X = comp_df[['Gpa']]
 y = comp_df['Genre']
 
@@ -35,7 +43,6 @@ conf_matrix = confusion_matrix(y_test, y_pred)
 genres = comp_df['Genre'].unique()
 print("Confusion Matrix:\n", conf_matrix)
 
-plt.figure(figsize=(25, 25))
 fig, ax = plt.subplots()
 sns.heatmap(pd.DataFrame(conf_matrix), annot=True, cmap="YlGnBu" ,fmt='g', xticklabels=genres, yticklabels=genres)
 plt.title("Confusion Matrix")
